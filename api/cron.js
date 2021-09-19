@@ -11,11 +11,13 @@ const faunaClient = new faunadb.Client({
 
 module.exports = async (req, res) => {
   if (req.method === 'POST') {
+    console.log('I was triggered during POST method')
     try {
       const now = new Date()
       now.setSeconds(0)
       now.setMilliseconds(0)
 
+      console.log('I was triggered before fauna query')
       // get all tweets from Now - 1 minute to Now
       const {data} = await faunaClient.query(
         q.Map(
@@ -23,7 +25,8 @@ module.exports = async (req, res) => {
           q.Lambda(['date', 'ref'], q.Get(q.Var('ref')))
         )
       )
-
+    
+      console.log('I was triggered before posting to twitter')
       // post all tweets from date range on twitter
       data.forEach(async ({data: {tweet}}) => {
         await twitterClient.v1.tweet(tweet)
