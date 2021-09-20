@@ -29,7 +29,9 @@ module.exports = async (req, res) => {
       console.log('I was triggered before posting to twitter')
       // post all tweets from date range on twitter
       data.forEach(async ({data: {tweet}}) => {
+        console.log('I have data')
         await twitterClient.v1.tweet(tweet)
+        console.log('I Tweeted!!!')
       })
       res.status(200).json({success: true})
     } catch (err) {
