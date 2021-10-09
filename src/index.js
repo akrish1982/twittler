@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+console.log(process.env.REACT_APP_TWITTER_BEARER_TOKEN);
+console.log(process.env.REACT_APP_FAUNADB_SECRET);
 ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
   document.getElementById('root')
+  
 );
 
 // If you want to start measuring performance in your app, pass a function
