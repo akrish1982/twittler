@@ -25,7 +25,7 @@ function App() {
       console.log(new Date(`${date} ${time}`))
 
       try {
-        const rslt= await faunadbClient.query(
+        await faunadbClient.query(
           q.Create(q.Collection('tweets'), {
             data: {
               tweet,
