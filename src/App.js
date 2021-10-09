@@ -1,5 +1,7 @@
 import React, {useCallback, useState} from 'react'
 import faunadb from 'faunadb'
+import {toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const currentDate = new Date().toISOString().substr(0, 10)
 
@@ -24,6 +26,7 @@ function App() {
 
       try {
         faunadbClient.query(
+        const rslt= await faunadbClient.query(
           q.Create(q.Collection('tweets'), {
             data: {
               tweet,
@@ -31,9 +34,13 @@ function App() {
             },
           })
         )
-
+        )
+        toast.configure();
+        toast.success('Success Tweet Has Been Send',{position : toast.POSITION.TOP_RIGHT});
         setTweet('')
       } catch (error) {
+        toast.configure();
+        toast.error('It have some error',{position : toast.POSITION.TOP_RIGHT});
         console.log(error)
       }
     },
