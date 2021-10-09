@@ -25,7 +25,6 @@ function App() {
       console.log(new Date(`${date} ${time}`))
 
       try {
-        faunadbClient.query(
         const rslt= await faunadbClient.query(
           q.Create(q.Collection('tweets'), {
             data: {
@@ -33,7 +32,6 @@ function App() {
               date: new Date(`${date} ${time}`).getTime(),
             },
           })
-        )
         )
         toast.configure();
         toast.success('Success Tweet Has Been Send',{position : toast.POSITION.TOP_RIGHT});
