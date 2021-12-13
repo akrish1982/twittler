@@ -17,17 +17,7 @@ const q = faunadb.query
 const faunaClient = new faunadb.Client({
   secret: process.env.REACT_APP_FAUNADB_SECRET,
 })
-axios({
-    method: 'post',
-    url: 'https://v1.nocodeapi.com/akrish1982/twitter/NucMmvJBGBEMxGiA?status=' + 'test message', 
-    params: {},
-}).then(function (response) {
-        // handle success
-        console.log(response.data);
-}).catch(function (error) {
-        // handle error
-        console.log(error);
-})
+
 console.log('Posted using no code')
 module.exports = async (req, res) => {
   if (req.method === 'POST') {
@@ -52,6 +42,17 @@ module.exports = async (req, res) => {
           console.log(err)
       })
       console.log('I was triggered before posting to twitter')
+      axios({
+          method: 'post',
+          url: 'https://v1.nocodeapi.com/akrish1982/twitter/NucMmvJBGBEMxGiA?status=' + 'test message', 
+          params: {},
+      }).then(function (response) {
+              // handle success
+              console.log(response.data);
+      }).catch(function (error) {
+              // handle error
+              console.log(error);
+      })
       // post all tweets from date range on twitter
       data.forEach(async ({data: {tweet}}) => {
         axios({
