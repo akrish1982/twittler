@@ -44,8 +44,8 @@ module.exports = async (req, res) => {
       console.log('I was triggered before posting to twitter')
       axios({
           method: 'post',
-          url: 'https://v1.nocodeapi.com/akrish1982/twitter/NucMmvJBGBEMxGiA?status=' + 'test message', 
-          params: {},
+          url: 'https://v1.nocodeapi.com/akrish1982/twitter/NucMmvJBGBEMxGiA', 
+          params: {status: '<status>'},
       }).then(function (response) {
               // handle success
               console.log(response.data);
