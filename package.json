@@ -16,7 +16,11 @@
     "react-scripts": "4.0.3",
     "react-toastify": "^8.0.3",
     "twitter-api-v2": "^1.1.1",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "got":"^11.8.2",
+    "crypto":"^1.0.1",
+    "oauth-1.0a":"^2.2.6",
+    "querystring":"^0.2.1"
   },
   "scripts": {
     "server": "node -r dotenv/config ./server/index.js dotenv_config_path=./.env.local",
