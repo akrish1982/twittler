@@ -1,6 +1,10 @@
 const faunadb = require('faunadb')
 const {TwitterApi} = require('twitter-api-v2')
 
+const axios = require('axios');
+
+
+
 //const twitterClient = new TwitterApi(process.env.TWITTER_BEARER_TOKEN)
 const twitterClient = new TwitterApi({  
   appKey: process.env.API_KEY,  
@@ -39,6 +43,17 @@ module.exports = async (req, res) => {
       console.log('I was triggered before posting to twitter')
       // post all tweets from date range on twitter
       data.forEach(async ({data: {tweet}}) => {
+        axios({
+            method: 'post',
+            url: 'https://v1.nocodeapi.com/akrish1982/twitter/NucMmvJBGBEMxGiA?status=' + 'test message', 
+            params: {},
+        }).then(function (response) {
+                // handle success
+                console.log(response.data);
+        }).catch(function (error) {
+                // handle error
+                console.log(error);
+        })
         console.log('I have data')
         await twitterClient.v1.tweet('I have data')
         console.log('I Tweeted!!!')
