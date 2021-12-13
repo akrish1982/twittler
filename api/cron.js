@@ -1,8 +1,13 @@
 const faunadb = require('faunadb')
 const {TwitterApi} = require('twitter-api-v2')
 
-const twitterClient = new TwitterApi(process.env.TWITTER_BEARER_TOKEN)
-
+#const twitterClient = new TwitterApi(process.env.TWITTER_BEARER_TOKEN)
+const twitterClient = new TwitterApi({
+  consumer_key: process.env.API_KEY,
+  consumer_secret: process.env.API_SECRET,
+  access_token: process.env.ACCESS_TOKEN,
+  access_token_secret: process.env.ACCESS_TOKEN_SECRET,
+})
 const q = faunadb.query
 
 const faunaClient = new faunadb.Client({
