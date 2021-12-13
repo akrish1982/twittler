@@ -5,8 +5,8 @@ const {TwitterApi} = require('twitter-api-v2')
 const twitterClient = new TwitterApi({  
   appKey: process.env.API_KEY,  
   appSecret : process.env.API_SECRET,
-  access_token : process.env.ACCESS_TOKEN,
-  access_token_secret : process.env.ACCESS_TOKEN_SECRET
+  accessToken : process.env.ACCESS_TOKEN,
+  accessSecret : process.env.ACCESS_TOKEN_SECRET
 })
 const q = faunadb.query
 
@@ -30,12 +30,12 @@ module.exports = async (req, res) => {
           q.Lambda(['date', 'ref'], q.Get(q.Var('ref')))
         )
       )
-      console.log('I am new code to create auth link')
-
-      // Use URL generated
-      const authUrl = authLink.url;
-      console.log('I am new code to create auth link')
-      
+      twitterClient.v1.tweet('This tweet was written by a bot').then((val) => {
+          console.log(val)
+          console.log("success")
+      }).catch((err) => {
+          console.log(err)
+      })
       console.log('I was triggered before posting to twitter')
       // post all tweets from date range on twitter
       data.forEach(async ({data: {tweet}}) => {
