@@ -31,11 +31,6 @@ module.exports = async (req, res) => {
         )
       )
       console.log('I am new code to create auth link')
-      const authLink = await twitterClient.generateAuthLink();
-
-      // By default, oauth/authenticate are used for auth links, you can change with linkMode
-      // property in second parameter to 'authorize' to use oauth/authorize
-      const authLink = await twitterClient.generateAuthLink({ linkMode: 'authorize' });
 
       // Use URL generated
       const authUrl = authLink.url;
