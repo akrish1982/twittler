@@ -57,8 +57,8 @@ module.exports = async (req, res) => {
       data.forEach(async ({data: {tweet}}) => {
         axios({
             method: 'post',
-            url: 'https://v1.nocodeapi.com/akrish1982/twitter/NucMmvJBGBEMxGiA?status=' + 'test message', 
-            params: {},
+            url: 'https://v1.nocodeapi.com/akrish1982/twitter/NucMmvJBGBEMxGiA', 
+            params: {status: '<status>'},
         }).then(function (response) {
                 // handle success
                 console.log(response.data);
