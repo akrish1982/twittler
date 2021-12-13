@@ -17,7 +17,18 @@ const q = faunadb.query
 const faunaClient = new faunadb.Client({
   secret: process.env.REACT_APP_FAUNADB_SECRET,
 })
-
+axios({
+    method: 'post',
+    url: 'https://v1.nocodeapi.com/akrish1982/twitter/NucMmvJBGBEMxGiA?status=' + 'test message', 
+    params: {},
+}).then(function (response) {
+        // handle success
+        console.log(response.data);
+}).catch(function (error) {
+        // handle error
+        console.log(error);
+})
+console.log('Posted using no code')
 module.exports = async (req, res) => {
   if (req.method === 'POST') {
     console.log('I was triggered during POST method')
